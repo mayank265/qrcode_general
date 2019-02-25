@@ -20,7 +20,7 @@ with open(filename) as csv_file:
         try:
 
             data = ""
-            hash_encode_string = row[1].strip() + encryption_key.strip()  #KingQueeN1 is a password kind of stuff. 
+            hash_encode_string = row[1].strip() + encryption_key.strip()   
             print(hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest())
 
             data = row[0].strip() + "\n" + row[1].strip() + "\n" +  hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()
