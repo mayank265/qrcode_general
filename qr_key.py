@@ -20,7 +20,7 @@ with open(filename) as csv_file:
         try:
 
             data = ""
-            hash_encode_string = row[1].strip() + encryption_key.strip()   
+            hash_encode_string = row[1].strip() + encryption_key.strip()
             print(hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest())
 
             data = row[0].strip() + "\n" + row[1].strip() + "\n" +  hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()
@@ -29,7 +29,7 @@ with open(filename) as csv_file:
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_H,
                 box_size=10,
-                border=2,
+                border=4,
             )
 
             qr.add_data(data)
@@ -43,3 +43,4 @@ with open(filename) as csv_file:
         except Exception as e:
             print(e)
             print("Error")
+
