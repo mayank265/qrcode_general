@@ -24,11 +24,11 @@ with open(filename) as csv_file:
             print(hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest())
 
             data = row[0].strip() + "\n" + row[1].strip() + "\n" +  hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()
-            for i in range(1,11):
+            for i in range(3,4):
                 print(i)
                 qr = qrcode.QRCode(
                     version=1,
-                    error_correction=qrcode.constants.ERROR_CORRECT_L,
+                    error_correction=qrcode.constants.ERROR_CORRECT_H,
                     box_size=i,
                     border=4,
                 )
