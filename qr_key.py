@@ -11,7 +11,7 @@ try:
 except ImportError:
     import Image
 
-filename  = 'key.csv'
+filename  = 'dupkeys.txt'
 writefile='key_hash.txt'
 fwrite_ptr = open(writefile,'w')
 with open(filename) as csv_file:
