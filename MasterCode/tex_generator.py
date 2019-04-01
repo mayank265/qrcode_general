@@ -1,5 +1,5 @@
 header = r'''\documentclass{article}
-\usepackage[demo]{graphicx}
+\usepackage{graphicx}
 \usepackage{caption,subcaption}
 \usepackage[left=1cm, right=2cm, top=1cm,bottom=1cm]{geometry}
 
@@ -29,10 +29,10 @@ ender = r'''	\end{figure}
 footer = r'''\end{document}
 '''
 
-with open('generated_output.tex', 'w') as f:
+with open('Keys_printout.tex', 'w') as f:
 	f.write(header)
 	i = 0
-	for line in open('k.txt', 'r'):
+	for line in open('list_keys_here.txt', 'r'):
 		if i == 0:
 			f.write(beginner)
 		line = line.rstrip()
