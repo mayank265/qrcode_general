@@ -12,6 +12,8 @@ except ImportError:
     import Image
 
 filename  = 'key.csv'
+writefile='key_hash.txt'
+fwrite_ptr = open(writefile,'w')
 with open(filename) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
@@ -27,7 +29,7 @@ with open(filename) as csv_file:
 
             qr = qrcode.QRCode(
                 version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_H,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
                 box_size=10,
                 border=4,
             )
@@ -42,7 +44,11 @@ with open(filename) as csv_file:
                               'wb')  # will open the file, if file does not exist, it will be created and opened.
             img.save(image_file)  # write qrcode encoded data to the image file.
             image_file.close()  # close the opened file handler.
+            print(file_name+','+hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()+'\n')
+            text_write = str(file_name.split('.')[0]+','+hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()+'\n')
+            fwrite_ptr.write(text_write)
         except Exception as e:
             print(e)
             print("Error")
 
+fwrite_ptr.close()
