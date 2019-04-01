@@ -35,7 +35,9 @@ with open(filename) as csv_file:
             qr.add_data(data)
             qr.make(fit=True)
             img = qr.make_image(fill_color="black", back_color="white")
-            file_name = row[1].strip().split(' ')[0].title() + '_' + '.png'
+#            file_name = row[1].strip().split(' ')[0].title() + '_' + '.png'  #Professor
+            print(row[0])
+            file_name = row[0].strip() + '.png'	#keys
             image_file = open(file_name,
                               'wb')  # will open the file, if file does not exist, it will be created and opened.
             img.save(image_file)  # write qrcode encoded data to the image file.
