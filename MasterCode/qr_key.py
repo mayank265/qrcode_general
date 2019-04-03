@@ -6,6 +6,7 @@ import hashlib
 
 encryption_key = "BatMaN!007GurUjI";
 auto_incr_start = 122
+auto_incr_start+=1
 try:
     from PIL import Image
 except ImportError:
@@ -48,7 +49,7 @@ with open(filename) as csv_file:
             text_write = str(str(auto_incr_start) + ',' + file_name.split('.')[0]+','+hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()+','+ '2019-03-13 17:32:37' + ',' + '1' + '\n')
             auto_incr_start+=1
             fwrite_ptr.write(text_write)
-            
+
         except Exception as e:
             print(e)
             print("Error")
