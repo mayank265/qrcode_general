@@ -1,7 +1,7 @@
 import csv
 import qrcode
 import hashlib
-
+from datetime import datetime
 #QRcode::png($name."\n".$rollno."\n".md5($roll_number.$GLOBALS['encryption_key']))
 
 encryption_key = "BatMaN!007GurUjI";
@@ -46,7 +46,9 @@ with open(filename) as csv_file:
             img.save(image_file)  # write qrcode encoded data to the image file.
             image_file.close()  # close the opened file handler.
             print(file_name+','+hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()+'\n')
-            text_write = str(str(auto_incr_start) + ',' + file_name.split('.')[0]+','+hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()+','+ '2019-03-13 17:32:37' + ',' + '1' + '\n')
+
+            text_write = str(str(auto_incr_start) + ',' + file_name.split('.')[0]+','+hashlib.md5(hash_encode_string.encode('utf-8')).hexdigest()+','+ str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')) + ',' + '1' + '\n')
+            print(text_write)
             auto_incr_start+=1
             fwrite_ptr.write(text_write)
 
@@ -55,3 +57,4 @@ with open(filename) as csv_file:
             print("Error")
 
 fwrite_ptr.close()
+
